@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap');
+
+:root {
+    --bule: #099ff5;
+    --black: #130f40;
+    --light-color: #666;
+    --box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .1);
+    --border: .2rem solid rgba(0, 0, 0, .1);
+    --outline: .1rem solid rgba(0, 0, 0, .1);
+    --outline-hover: .2rem solid var(--black);
+}
+:not(:defined) > * {
+    display: none;
+}
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: all .2s linear;
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    scroll-padding-top: 7rem;
+}
+
+body {
+    background: #eee;
+}
+
+section {
+    padding: 10rem 9%;
+}
+
+.heading {
+    text-align: center;
+    padding: 2rem 0;
+    padding-bottom: 3rem;
+    font-size: 3.5rem;
+    color: var(--black);
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 9%;
+    background: #fff;
+    box-shadow: var(--box-shadow);
+}
+
+.header .logo {
+    font-size: 2.5rem;
+    font-weight: bolder;
+    color: var(--black);
+}
+
+.header .logo i {
+    color: var(--bule);
+}
+
+.view {
+
+    position: absolute;
+    top: 12%;
+    left: 20%;
+    padding: 1rem;
+    border-radius: .5rem;
+    box-shadow: var(--box-shadow);
+    width: 60%;
+    background: #fff;
+}
+
+.view .box {
+    width: 100%;
+    margin: .7rem 0;
+    background: #eee;
+    border-radius: .5rem;
+    padding: 1rem;
+    font-size: 1.6rem;
+    color: var(--black);
+    text-transform: none;
+}
+
+model-viewer {
+    display: grid;
+    height: 460px;
+    width: auto;
+    align-content: center;
+}
+
+.progress-bar {
+    display: block;
+    width: 33%;
+    height: 10%;
+    max-height: 2%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    border-radius: 25px;
+    box-shadow: 0px 3px 10px 3px rgba(0, 0, 0, 0.5), 0px 0px 5px 1px rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.progress-bar.hide {
+    visibility: hidden;
+    transition: visibility 0.3s;
+}
+
+.update-bar {
+    background-color: rgba(255, 255, 255, 0.9);
+    width: 0%;
+    height: 100%;
+    border-radius: 25px;
+    float: left;
+    transition: width 0.3s;
+}
+
+#ar-button {
+    background-image: url(ar_icon.png);
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    background-position: 12px 50%;
+    background-color: #fff;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    bottom: 16px;
+    padding: 0px 16px 0px 40px;
+    font-family: Roboto Regular, Helvetica Neue, sans-serif;
+    font-size: 14px;
+    color: #4285f4;
+    height: 36px;
+    line-height: 36px;
+    border-radius: 18px;
+    border: 1px solid #DADCE0;
+}
+
+#ar-button:active {
+    background-color: #E8EAED;
+}
+
+#ar-button:focus {
+    outline: none;
+}
+
+#ar-button:focus-visible {
+    outline: 1px solid #4285f4;
+}
+
+@keyframes circle {
+    from {
+        transform: translateX(-50%) rotate(0deg) translateX(50px) rotate(0deg);
+    }
+
+    to {
+        transform: translateX(-50%) rotate(360deg) translateX(50px) rotate(-360deg);
+    }
+}
+
+@keyframes elongate {
+    from {
+        transform: translateX(100px);
+    }
+
+    to {
+        transform: translateX(-100px);
+    }
+}
+
+model-viewer>#ar-prompt {
+    position: absolute;
+    left: 50%;
+    bottom: 60px;
+    animation: elongate 2s infinite ease-in-out alternate;
+    display: none;
+}
+
+model-viewer[ar-status="session-started"]>#ar-prompt {
+    display: block;
+}
+
+model-viewer>#ar-prompt>img {
+    animation: circle 4s linear infinite;
+}
+
+.view .content {
+    display: grid;
+    font-size: x-large;
+    justify-content: center;
+    justify-items: center;
+}
+
+.view .content .stars {
+    display: flex;
+    align-content: center;
+    color: #099ff5;
+}
+
+.view .close {
+    position: relative;
+    left: auto;
+    display: flex;
+    font-size: 2rem;
+    font-weight: bolder;
+    color: var(--black);
+}
+
+.view .close .btn {
+    color: black;
+}
+.view .btn{
+    margin-top: 1rem;
+    display: inline-block;
+    padding:.8rem 3rem;
+    font-size: 1.7rem;
+    border-radius: .5rem;
+    border:.2rem solid var(--black);
+    color:var(--black);
+    cursor: pointer;
+    background: none;
+}
+
+.view .close .btn:hover {
+    color: var(--bule);
+}
